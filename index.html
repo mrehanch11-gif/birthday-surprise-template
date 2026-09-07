@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="description" content="Birthday Surprise Template, an interactive celebration experience created by Shabbir Showne." />
+    <meta name="theme-color" content="#080304" />
+    <title>Birthday Surprise Template by Shabbir Showne</title>
+    <meta property="og:title" content="Birthday Surprise Template" />
+    <meta property="og:description" content="Create a cinematic, interactive birthday surprise for someone you love." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Safe fetch property wrapper to prevent read-only accessor collisions in sandbox -->
+    <script>
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var customFetch = originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return customFetch;
+            },
+            set: function(fn) {
+              customFetch = fn;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          // ignore if already configurable
+        }
+      })();
+    </script>
+
+    <!-- Google Fonts for romantic and modern luxury typography -->
+  </head>
+  <body class="bg-rose-50/50 text-slate-800 antialiased selection:bg-rose-200 selection:text-rose-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

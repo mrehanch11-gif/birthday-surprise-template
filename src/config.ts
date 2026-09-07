@@ -1,0 +1,21 @@
+export const TEMPLATE_CONFIG = {
+  recipientName: 'Your Person',
+  senderName: 'Your Name',
+  recipientAge: 25,
+  yearsTogether: 3,
+  distanceLabel: 'Every distance',
+  senderCity: 'Your City',
+  recipientCity: 'Their City',
+  openingLine: 'A private little world made with love',
+  openingNote: 'Created with patience, joy, and a whole lot of heart',
+  letter: [
+    'Hello, my favourite person,',
+    'Today is your day, and I hope it brings you the same warmth and happiness you bring into my life.',
+    'I treasure the moments that make you smile. Your happiness has a way of making everything around me feel brighter too.',
+    'This celebration is for you, but loving you has made it special for me as well.',
+    'Thank you for every memory we have made and every new chapter still waiting for us. I hope we keep growing, laughing, and choosing each other through all of them.',
+    'Always yours,\nYour Name',
+  ],
+  galleryImages: Array.from({ length: 16 }, (_, index) => `/demo/portrait-${(index % 4) + 1}.png`),
+  memoryImages: ['/demo/portrait-1.png', '/demo/portrait-2.png', '/demo/portrait-3.png', '/demo/portrait-4.png'],
+} as const;
