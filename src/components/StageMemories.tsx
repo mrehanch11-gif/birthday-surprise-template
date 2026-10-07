@@ -32,7 +32,7 @@ export default function StageMemories({ onNext }: StageMemoriesProps) {
     </div>
     <div className="close-moments-photos">
       {PHOTOS.map((photo, index) => <motion.figure key={photo.src} initial={{ opacity: 0, y: 52, rotate: index % 2 ? 4 : -4, scale: .9, filter: 'blur(8px)' }} animate={{ opacity: 1, y: 0, rotate: index % 2 ? 1 : -1, scale: 1, filter: 'blur(0px)' }} transition={{ delay: .62 + index * .13, duration: .78, ease: [0.16, 1, 0.3, 1] }} whileHover={{ y: -9, rotate: 0, scale: 1.025 }}>
-        <div><img src={photo.src} alt={photo.title} /></div>
+        <div><img src={photo.src} alt={photo.title} loading={index === 0 ? "eager" : "lazy"} decoding="async" /></div>
         <figcaption><span>{photo.eyebrow}</span><strong>{photo.title}</strong></figcaption>
         <Heart className="close-moments-heart" fill="currentColor" aria-hidden="true" />
       </motion.figure>)}
