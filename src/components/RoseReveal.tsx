@@ -33,9 +33,9 @@ export default function RoseReveal({ onComplete }: { onComplete: () => void }) {
     <div className="rose-stars" />
     <div className="rose-wreath" aria-hidden="true">{roses.map((r,i)=><img key={i} src="/red-rose-top.png" alt="" style={{'--x':`${r.x}%`,'--y':`${r.y}%`,'--size':`${r.size}px`,'--r':`${r.rotation}deg`,'--delay':`${r.delay}s`} as CSSProperties}/>)}</div>
     <button type="button" className="rose-trigger" onClick={()=>{sound.playOpening();sound.playArrowFlight();window.setTimeout(()=>sound.playSparkle(),420);setPhase('bloom');}} aria-label="Open the birthday rose"><img src="/red-rose-top.png" alt="A birthday rose"/><span>Touch the rose</span></button>
-    <div className="rose-photo-title" aria-hidden="true"><p>Today, every rose blooms for you</p><strong><span>Happy Birthday</span><small>For my cousin sister, {TEMPLATE_CONFIG.recipientName}</small></strong></div>
+    <div className="rose-photo-title" aria-hidden="true"><p>Today is all about celebrating you</p><strong><span>Happy Birthday</span><small>For my cousin sister, {TEMPLATE_CONFIG.recipientName}</small></strong></div>
     <div className="rose-photo-prints">{FINALE_PORTRAITS.map((photo,i)=><figure className={`rose-print print-${i+1}`} key={photo.id}><span className="rose-print-heart"><Heart fill="currentColor"/></span><img src={photo.url} alt={photo.caption}/><figcaption>{photo.caption}</figcaption></figure>)}<button className="rose-message-next" type="button" onClick={()=>{sound.playTransition();setPhase('message');}}>Read the final message</button></div>
-    <div className="birthday-reveal"><p>For a cousin sister who has been part of my life since childhood</p><h1>Happy Birthday,<br/><strong>{TEMPLATE_CONFIG.recipientName}.</strong></h1><span>21 looks good on you</span><button type="button" onClick={onComplete}>Replay our story <ArrowRight aria-hidden="true"/></button></div>
-    <footer className="rose-credit">Birthday surprise by <a href={CREATOR.repository} target="_blank" rel="noreferrer">{CREATOR.name}</a></footer>
+    <div className="birthday-reveal"><p>For a cousin sister who has been part of my life since childhood</p><h1>Happy Birthday,<br/><strong>{TEMPLATE_CONFIG.recipientName}.</strong></h1><span>21 looks good on you</span><button type="button" onClick={onComplete}>Replay the birthday surprise <ArrowRight aria-hidden="true"/></button></div>
+    <footer className="rose-credit">Birthday surprise for Faiza · Created by Rehan</footer>
   </div>;
 }
