@@ -23,7 +23,7 @@ export default function StageLetter({ onNext }: StageLetterProps) {
     <div className="paper-letter-light" />
     <div className="letter-rose-field" aria-hidden="true">{Array.from({ length: 7 }, (_, index) => <i key={index} />)}</div>
     <motion.div className="paper-envelope-scene" initial={{ opacity: 0, y: 55, rotate: -2 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: .9, ease: [0.16, 1, 0.3, 1] }}>
-      <button className="paper-envelope" type="button" onClick={openLetter} aria-label="Open the love letter">
+      <button className="paper-envelope" type="button" onClick={openLetter} aria-label="Open the birthday letter">
         <span className="paper-envelope-back" />
         <motion.span className="paper-envelope-flap" animate={{ rotateX: isOpen ? 178 : 0, zIndex: isOpen ? 1 : 6 }} transition={{ duration: .9, ease: [0.65, 0, 0.35, 1] }} />
         <span className="paper-heart heart-one"><Heart fill="currentColor" /></span>
@@ -34,7 +34,7 @@ export default function StageLetter({ onNext }: StageLetterProps) {
         <span className="paper-envelope-left" /><span className="paper-envelope-right" /><span className="paper-envelope-front" />
         <motion.span className="paper-wax" animate={isOpen ? { opacity: 0, scale: 1.7, y: 22 } : { opacity: 1, scale: [1, 1.08, 1] }} transition={isOpen ? { duration: .4 } : { repeat: Infinity, duration: 1.8 }}><Heart fill="currentColor" /></motion.span>
       </button>
-      <AnimatePresence>{!isOpen && <motion.p className="paper-letter-hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: .65 }}>Tap the heart to open</motion.p>}</AnimatePresence>
+      <AnimatePresence>{!isOpen && <motion.p className="paper-letter-hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: .65 }}>Tap to open your birthday letter</motion.p>}</AnimatePresence>
       <AnimatePresence>{isOpen && <motion.article className="diary-letter" initial={{ opacity: 0, x: -78, y: 118, scale: .54, rotate: -12 }} animate={{ opacity: [0, 1, 1], x: [-78, 74, 108], y: [118, -26, -20], scale: [.54, .78, .9], rotate: [-12, 7, 3] }} exit={{ opacity: 0 }} transition={{ delay: .48, duration: 1.4, times: [0, .66, 1], ease: [0.16, 1, 0.3, 1] }}>
         <motion.span className="letter-fold letter-fold-top" initial={{ rotateX: 179 }} animate={{ rotateX: 0 }} transition={{ delay: 1.62, duration: .86, ease: [0.16, 1, 0.3, 1] }} />
         <motion.span className="letter-fold letter-fold-bottom" initial={{ rotateX: -179 }} animate={{ rotateX: 0 }} transition={{ delay: 2.18, duration: .9, ease: [0.16, 1, 0.3, 1] }} />
