@@ -934,3 +934,37 @@ button{user-select:none;-webkit-user-select:none}
     transition-duration:.01ms!important;
   }
 }
+
+
+/* Mobile performance: preserve the visual design while reducing GPU/CPU work */
+@media(max-width:700px){
+  .memory-reels .reel-track,
+  .portrait-reel-track{will-change:auto}
+  .memory-bloom{animation-duration:16s;opacity:.18;will-change:auto}
+  .rose-stars{animation-duration:36s}
+  .rose-wreath{animation-duration:24s}
+  .floral-half img{animation-duration:12s}
+  .rose-trigger img{animation-duration:6s}
+  .balloon-bg,.balloon-classic-bg{animation-duration:22s}
+  .seven-days::before{animation-duration:28s}
+  .seven-days-glow{animation-duration:14s}
+  .paper-letter-light{filter:blur(52px)}
+  .frosted-glass-main,.frosted-glass-subtle,.frosted-glass-card,.frosted-glass-pill,.frosted-glass-dark,.glass-panel,.glass-panel-dark{
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+  }
+}
+@media(max-width:380px){
+  .memory-bloom{display:none}
+  .rose-stars{animation:none}
+  .seven-days::before{animation:none}
+  .seven-days-glow{animation:none}
+  .floral-half img{animation:none}
+  .balloon-bg,.balloon-classic-bg{animation:none}
+  .portrait-reel-track{animation-duration:100s}
+}
+@media(prefers-reduced-motion:reduce){
+  .memory-reels .reel-track,.portrait-reel-track,.memory-bloom,.rose-stars,.rose-wreath,.floral-half img,.rose-trigger img,.balloon-bg,.balloon-classic-bg,.seven-days::before,.seven-days-glow,.paper-wax{
+    animation:none!important;
+  }
+}
