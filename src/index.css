@@ -553,3 +553,51 @@ body::before {
     margin-bottom:10px!important;
   }
 }
+
+/* Mobile-first final tuning for the birthday letter */
+@media (max-width:700px){
+  .paper-letter{padding:0!important}
+  .paper-letter.is-open{display:block!important}
+  .paper-letter.is-open .paper-envelope-scene{
+    transform:translate(-50%,-50%) scale(.48)!important;
+    left:50%!important;
+    top:30%!important;
+    opacity:.22!important;
+  }
+  .diary-letter{
+    left:4vw!important;
+    top:3vh!important;
+    width:92vw!important;
+    height:calc(100svh - 92px)!important;
+    border-radius:4px!important;
+    -webkit-overflow-scrolling:touch!important;
+    box-shadow:0 18px 45px rgba(29,0,8,.42)!important;
+  }
+  .letter-copy{
+    padding:28px 20px 34px 48px!important;
+    min-height:100%!important;
+  }
+  .diary-letter p,.diary-letter p:last-child{
+    font-size:12px!important;
+    line-height:1.5!important;
+    letter-spacing:0!important;
+    margin-bottom:11px!important;
+  }
+  .paper-letter-next{
+    left:50%!important;
+    right:auto!important;
+    bottom:12px!important;
+    transform:translateX(-50%)!important;
+    padding:10px 15px!important;
+    font-size:9px!important;
+    white-space:nowrap!important;
+    max-width:88vw!important;
+  }
+  .paper-letter>footer{bottom:3px!important;font-size:7px!important}
+}
+@media (max-width:380px){
+  .diary-letter{left:3vw!important;width:94vw!important;height:calc(100svh - 88px)!important}
+  .letter-copy{padding-left:42px!important;padding-right:15px!important}
+  .diary-letter p,.diary-letter p:last-child{font-size:11px!important;line-height:1.45!important}
+  .paper-letter-next{font-size:8px!important;padding:9px 12px!important}
+}
