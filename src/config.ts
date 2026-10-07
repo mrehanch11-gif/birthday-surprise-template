@@ -1,11 +1,11 @@
 export const TEMPLATE_CONFIG = {
-  recipientName: 'Your Person',
-  senderName: 'Your Name',
-  recipientAge: 25,
+  recipientName: 'Faiza Saeed',
+  senderName: 'Rehan',
+  recipientAge: 21,
   yearsTogether: 3,
   distanceLabel: 'Every distance',
-  senderCity: 'Your City',
-  recipientCity: 'Their City',
+  senderCity: 'Lahore',
+  recipientCity: 'Mianwali',
   openingLine: 'A private little world made with love',
   openingNote: 'Created with patience, joy, and a whole lot of heart',
   letter: [
