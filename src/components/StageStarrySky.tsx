@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Heart } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { sound } from '../utils/audio';
 import { LongDistanceInfo } from '../types';
 import { TEMPLATE_CONFIG } from '../config';
 
@@ -44,7 +45,7 @@ export default function StageStarrySky({ onRestart, info }: StageStarrySkyProps)
           Keep chasing the life <span className="text-[#ffd7df]">you dream about.</span>
         </motion.h2>
         <motion.p custom={0.95} variants={reveal} initial="hidden" animate="visible" className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/72 sm:text-xl">
-          You have already spent so many years being brave, hardworking and away from home. I hope the next chapter brings you the engineering success, independence and happiness you are working so hard for.
+          At 21, you have already spent years being brave, hardworking and away from home. I hope the next chapter brings you the engineering success, independence and happiness you are working so hard for.
         </motion.p>
         <motion.p custom={1.35} variants={reveal} initial="hidden" animate="visible" className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-[#ffd7df] sm:text-lg">
           Keep making your family proud. And whenever life gets difficult, remember that your cousin Rehan is always somewhere cheering for you.
