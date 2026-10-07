@@ -8,10 +8,10 @@ interface StageSevenDaysProps { onNext: () => void; }
 
 const LINES = [
   <>Do you know what makes this surprise <strong>so special?</strong></>,
-  <>For the last <strong>seven days</strong>, I have been building every little part of this website myself.</>,
-  <>Every colour, every word, every moment, all made <strong>only for you from my heart.</strong></>,
-  <>So tell me, {TEMPLATE_CONFIG.recipientName}...</>,
-  <>Do you feel a little luckier knowing <strong>how deeply you are loved?</strong></>,
+  <>It is not about one perfect day. It is about <strong>years of growing up as family and friends.</strong></>,
+  <>From childhood jokes to serious conversations, we have collected <strong>more memories than we can count.</strong></>,
+  <>And somehow, through all these years, you became <strong>one of the people I can always talk to.</strong></>,
+  <>So, Faiza... <strong>this little journey is just for you.</strong></>,
 ];
 
 export default function StageSevenDays({ onNext }: StageSevenDaysProps) {
@@ -36,7 +36,7 @@ export default function StageSevenDays({ onNext }: StageSevenDaysProps) {
       whileHover={{ y: -4, scale: 1.025 }}
       whileTap={{ scale: .97 }}
       onClick={() => { sound.playSparkle(); onNext(); }}
-    >Continue the Surprise <ArrowRight /></motion.button>
+    >See the fun part <ArrowRight /></motion.button>
     <motion.footer initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 6.35, duration: .7 }}>
       <CreatorCredit />
     </motion.footer>
