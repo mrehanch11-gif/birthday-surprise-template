@@ -14,8 +14,8 @@ export default function FloralOpening({ onComplete, onMusicStart }: { onComplete
   };
   return (
     <div className={`floral-opening ${opening ? 'is-opening' : ''}`}>
-      <div className="floral-half floral-left"><img src="/floral-curtain.png" alt="" /></div>
-      <div className="floral-half floral-right"><img src="/floral-curtain.png" alt="" /></div>
+      <div className="floral-half floral-left"><img src="/floral-curtain.png" alt="" loading="eager" decoding="async" fetchPriority="high" /></div>
+      <div className="floral-half floral-right"><img src="/floral-curtain.png" alt="" loading="eager" decoding="async" /></div>
       <div className="floral-vignette" />
       <button type="button" className="floral-seal" onClick={reveal}>
         <span>{TEMPLATE_CONFIG.openingLine}</span><strong>For {TEMPLATE_CONFIG.recipientName}</strong><i>Open the surprise</i>
