@@ -131,7 +131,7 @@ export default function StageCake({ onNext, herName }: StageCakeProps) {
             Make a wish,<span className="block text-[#ffd8c5]">{herName}.</span>
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.58, duration: 0.6 }} className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-white/72 sm:text-base lg:mx-0">
-            {candlesLit ? 'Close your eyes, hold your happiest thought close, then blow out the candles.' : 'Your wish is on its way. May this year bring you everything your heart is waiting for.'}
+            {candlesLit ? 'Close your eyes, hold your happiest thought close, then blow out the candles.' : 'Your wish is on its way. May this year bring you happiness, success, and good memories.'}
           </motion.p>
 
           <AnimatePresence mode="wait">
@@ -150,10 +150,10 @@ export default function StageCake({ onNext, herName }: StageCakeProps) {
                   >
                     <label htmlFor="birthday-wish" className="flex items-center gap-2 px-4 pb-2 pt-2 text-left text-xs font-medium tracking-[0.04em] text-[#ffd9c8]">
                       <Sparkles className="h-3.5 w-3.5" />
-                      What is your heart quietly wishing for?
+                      What are you quietly wishing for?
                     </label>
                     <div className="flex min-h-14 items-center rounded-[1.25rem] bg-white/[0.07] p-1.5 transition duration-500 group-focus-within/wish:bg-white/[0.1]">
-                      <input id="birthday-wish" value={wishText} onChange={(event) => setWishText(event.target.value)} placeholder="Type the wish your heart is holding..." className="min-w-0 flex-1 bg-transparent px-3 text-sm text-white outline-none placeholder:text-white/42 sm:px-4" />
+                      <input id="birthday-wish" value={wishText} onChange={(event) => setWishText(event.target.value)} placeholder="Type your birthday wish..." className="min-w-0 flex-1 bg-transparent px-3 text-sm text-white outline-none placeholder:text-white/42 sm:px-4" />
                       <motion.button whileHover={{ scale: 1.035 }} whileTap={{ scale: 0.96 }} disabled={isSaving} className="shrink-0 rounded-[1rem] bg-[#fff2e7] px-5 py-3 text-xs font-bold text-[#711127] shadow-[0_8px_24px_rgba(20,0,5,0.18)] transition hover:bg-white disabled:opacity-65">{isSaving ? 'Sealing...' : 'Seal Wish'}</motion.button>
                     </div>
                   </motion.div>
