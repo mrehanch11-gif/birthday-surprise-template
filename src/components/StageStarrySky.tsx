@@ -1,8 +1,6 @@
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import { ArrowRight, Heart } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { sound } from '../utils/audio';
 import { LongDistanceInfo } from '../types';
 import { TEMPLATE_CONFIG } from '../config';
 
@@ -16,27 +14,10 @@ const reveal = {
   visible: (delay: number) => ({ opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.82, delay, ease: [0.22, 1, 0.36, 1] as const } }),
 };
 
-const escapePositions = [
-  { x: 0, y: 0 },
-  { x: 90, y: -40 },
-  { x: -110, y: 42 },
-  { x: 115, y: 48 },
-  { x: -95, y: -48 },
-  { x: 25, y: 55 },
-  { x: 105, y: -18 },
-];
-
 export default function StageStarrySky({ onRestart, info }: StageStarrySkyProps) {
-  const [accepted, setAccepted] = useState(false);
-  const [escapeIndex, setEscapeIndex] = useState(0);
-
-  const moveNoButton = () => setEscapeIndex((current) => (current + 1) % escapePositions.length);
-
-  const celebrateYes = () => {
-    if (accepted) return;
-    setAccepted(true);
+  const celebrate = () => {
     sound.playCelebrationFanfare();
-    const end = Date.now() + 3200;
+    const end = Date.now() + 2600;
     const colors = ['#fff1e6', '#f7b7c7', '#e6396e', '#f7c76f'];
     const burst = () => {
       confetti({ particleCount: 7, angle: 58, spread: 70, startVelocity: 42, origin: { x: 0, y: 0.72 }, colors });
@@ -51,56 +32,36 @@ export default function StageStarrySky({ onRestart, info }: StageStarrySkyProps)
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_46%,rgba(190,39,77,0.5),transparent_43%),radial-gradient(circle_at_14%_12%,rgba(242,119,140,0.16),transparent_26%),linear-gradient(145deg,#19060e_0%,#520d23_50%,#1c060f_100%)]" />
       <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle,#fff_0_0.8px,transparent_1.2px)] bg-[length:31px_31px]" />
       {[0, 1, 2, 3].map((item) => (
-        <motion.div
-          key={item}
-          animate={{ x: [0, item % 2 ? 42 : -36, 0], y: [0, -45 - item * 7, 0], scale: [0.85, 1.18, 0.85], opacity: [0.1, 0.24, 0.1] }}
+        <motion.div key={item} animate={{ x: [0, item % 2 ? 42 : -36, 0], y: [0, -45 - item * 7, 0], scale: [0.85, 1.18, 0.85], opacity: [0.1, 0.24, 0.1] }}
           transition={{ duration: 7 + item, delay: item * 0.7, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute rounded-full border border-[#f7a9ba]/30 bg-[#dc315c]/10 blur-[1px]"
-          style={{ width: 110 + item * 42, height: 110 + item * 42, left: `${8 + item * 25}%`, top: `${16 + (item % 2) * 52}%` }}
-        />
+          style={{ width: 110 + item * 42, height: 110 + item * 42, left: `${8 + item * 25}%`, top: `${16 + (item % 2) * 52}%` }} />
       ))}
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl text-center">
-        <motion.p custom={0.12} variants={reveal} initial="hidden" animate="visible" className="mb-6 text-sm font-semibold uppercase tracking-[0.34em] text-[#f1b9c5] sm:text-base">Did you know that?</motion.p>
-
-        <motion.h2 custom={0.5} variants={reveal} initial="hidden" animate="visible" className="mx-auto max-w-6xl whitespace-normal font-serif-luxury text-[clamp(2rem,4vw,4.6rem)] font-bold leading-tight tracking-[-0.045em] text-white lg:whitespace-nowrap">
-          You spent your first {Math.max(info.age - info.yearsTogether, 1)} years becoming you.
+      <div className="relative z-10 mx-auto w-full max-w-5xl text-center">
+        <motion.p custom={0.12} variants={reveal} initial="hidden" animate="visible" className="mb-6 text-sm font-semibold uppercase tracking-[0.34em] text-[#f1b9c5] sm:text-base">One last thing, Faiza</motion.p>
+        <motion.h2 custom={0.5} variants={reveal} initial="hidden" animate="visible" className="mx-auto max-w-5xl font-serif-luxury text-[clamp(2rem,4vw,4.6rem)] font-bold leading-tight tracking-[-0.045em] text-white">
+          Keep chasing the life <span className="text-[#ffd7df]">you dream about.</span>
         </motion.h2>
-        <motion.p custom={0.9} variants={reveal} initial="hidden" animate="visible" className="mx-auto mt-2 max-w-6xl whitespace-normal font-serif-luxury text-[clamp(1.55rem,2.8vw,3.25rem)] leading-tight text-[#ffd7df] lg:whitespace-nowrap">
-          And now, it has been {info.yearsTogether} beautiful years of you and me.
+        <motion.p custom={0.95} variants={reveal} initial="hidden" animate="visible" className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/72 sm:text-xl">
+          You have already spent so many years being brave, hardworking and away from home. I hope the next chapter brings you the engineering success, independence and happiness you are working so hard for.
+        </motion.p>
+        <motion.p custom={1.35} variants={reveal} initial="hidden" animate="visible" className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-[#ffd7df] sm:text-lg">
+          Keep making your family proud. And whenever life gets difficult, remember that your cousin Rehan is always somewhere cheering for you.
         </motion.p>
 
-        <motion.p custom={1.35} variants={reveal} initial="hidden" animate="visible" className="mx-auto mt-7 max-w-4xl text-base leading-relaxed text-white/72 sm:text-xl">
-          So, {info.herName}, do you want us to keep growing together through every year still waiting for us?
-        </motion.p>
+        <motion.div custom={1.7} variants={reveal} initial="hidden" animate="visible" className="mt-9">
+          <motion.button whileHover={{ scale: 1.045 }} whileTap={{ scale: 0.97 }} onClick={celebrate} className="inline-flex items-center gap-3 rounded-full bg-[#fff0e8] px-8 py-4 text-sm font-bold text-[#671027] shadow-[0_18px_55px_rgba(0,0,0,0.3)] transition hover:bg-white sm:text-base">
+            Celebrate Faiza <Heart className="h-4 w-4 fill-current" />
+          </motion.button>
+        </motion.div>
 
-        <AnimatePresence mode="wait">
-          {!accepted ? (
-            <motion.div key="choices" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ delay: 1.8, duration: 0.6 }} className="relative mx-auto mt-7 h-32 w-full max-w-md">
-              <motion.button whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.96 }} onClick={celebrateYes} className="absolute left-[19%] top-8 -translate-x-1/2 rounded-full bg-[#fff0e8] px-9 py-3.5 text-sm font-bold text-[#671027] shadow-[0_15px_45px_rgba(0,0,0,0.28)] transition hover:bg-white sm:text-base">Yes</motion.button>
-              <motion.button
-                animate={escapePositions[escapeIndex]}
-                transition={{ type: 'spring', stiffness: 420, damping: 18 }}
-                onMouseEnter={moveNoButton}
-                onFocus={moveNoButton}
-                onPointerDown={(event) => { event.preventDefault(); moveNoButton(); }}
-                onClick={(event) => { event.preventDefault(); moveNoButton(); }}
-                className="absolute left-[67%] top-8 -translate-x-1/2 rounded-full border border-white/35 bg-white/10 px-9 py-3.5 text-sm font-bold text-white backdrop-blur-md sm:text-base"
-              >No</motion.button>
-            </motion.div>
-          ) : (
-            <motion.div key="accepted" initial={{ opacity: 0, y: 24, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }} className="mt-8">
-              <motion.div initial={{ scale: 0, rotate: -12 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 220, damping: 14 }} className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#ef4770] shadow-[0_0_42px_rgba(239,71,112,0.65)]"><Heart className="h-6 w-6 fill-white" /></motion.div>
-              <p className="font-serif-luxury text-xl text-[#ffd7df] sm:text-2xl">I knew your heart would say yes.</p>
-              <motion.button initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.65 }} whileHover={{ scale: 1.045 }} whileTap={{ scale: 0.97 }} onClick={onRestart} className="mt-6 inline-flex items-center gap-3 rounded-full bg-[#fff0e8] px-8 py-4 text-sm font-bold text-[#671027] shadow-[0_18px_55px_rgba(0,0,0,0.3)] transition hover:bg-white sm:text-base">
-                Enter the Rose Finale<ArrowRight className="h-4 w-4" />
-              </motion.button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <motion.button initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.3, duration: .65 }} whileHover={{ scale: 1.035 }} whileTap={{ scale: .97 }} onClick={onRestart} className="mt-5 inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 px-7 py-3 text-sm font-semibold text-white backdrop-blur-md">
+          Replay the birthday surprise <ArrowRight className="h-4 w-4" />
+        </motion.button>
       </div>
 
-      <p className="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30">Always yours, {TEMPLATE_CONFIG.senderName}</p>
+      <p className="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30">Always cheering for you, {TEMPLATE_CONFIG.senderName}</p>
     </motion.section>
   );
 }
