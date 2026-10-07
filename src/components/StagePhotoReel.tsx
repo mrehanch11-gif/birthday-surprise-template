@@ -13,7 +13,7 @@ export default function StagePhotoReel({ onNext }: StagePhotoReelProps) {
   const secondRow = gallery.slice(8, 16);
 
   return <motion.section className="portrait-reel" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: .65 }}>
-    <img className="portrait-reel-bg" src="/memory-reel-red-hearts.jpg" alt="" />
+    <img className="portrait-reel-bg" src="/memory-reel-red-hearts.jpg" alt="" loading="eager" decoding="async" fetchPriority="high" />
     <header className="portrait-reel-heading">
       <motion.h2 initial="hidden" animate="visible">
         <motion.span className="block" variants={{ hidden: { opacity: 0, y: 28, filter: 'blur(8px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { delay: .12, duration: .76, ease: [0.16, 1, 0.3, 1] } } }}>All the memories of you</motion.span>
@@ -37,7 +37,7 @@ export default function StagePhotoReel({ onNext }: StagePhotoReelProps) {
 function PhotoRow({ photos, direction }: { photos: { id: string; src: string }[]; direction: 'forward' | 'reverse' }) {
   return <div className="portrait-reel-viewport"><div className={`portrait-reel-track ${direction}`}>
     {[0, 1, 2, 3].map((copy) => <div className="portrait-reel-group" key={`copy-${copy}`} aria-hidden={copy > 0}>
-      {photos.map((photo) => <figure key={`${photo.id}-${copy}`}><img src={photo.src} alt={copy === 0 ? 'Replaceable demo photo' : ''} onError={(event) => { event.currentTarget.src = '/demo/portrait-1.png'; }} /></figure>)}
+      {photos.map((photo) => <figure key={`${photo.id}-${copy}`}><img src={photo.src} alt={copy === 0 ? 'Replaceable demo photo' : ''} loading={copy === 0 ? "eager" : "lazy"} decoding="async" onError={(event) => { event.currentTarget.src = '/demo/portrait-1.png'; }} /></figure>)}
     </div>)}
   </div></div>;
 }
