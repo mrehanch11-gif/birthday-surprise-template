@@ -44,12 +44,12 @@ export default function StageWelcome({ onStart, info }: StageWelcomeProps) {
     <div className="welcome-ambient welcome-ambient-two" />
 
     <section className="welcome-copy-panel">
-      <p className="welcome-kicker">A private journey for {info.herName}</p>
+      <p className="welcome-kicker">A birthday journey for {info.herName}</p>
       <h1>
         <span className="welcome-title-line welcome-distance-title">{TEMPLATE_CONFIG.distanceLabel}.</span>
-        <span className="welcome-title-line welcome-script">Still, always you.</span>
+        <span className="welcome-title-line welcome-script">The girl I grew up with.</span>
       </h1>
-      <p className="welcome-copy">From {info.hisCity} to {info.herCity}, my heart has never felt far from yours.</p>
+      <p className="welcome-copy">From childhood memories to where life has taken us today, this little surprise is for my cousin sister and one of my closest friends.</p>
 
       <div className="welcome-route" aria-label={`${info.hisCity} to ${info.herCity}`}>
         <span><MapPin />{info.hisCity}</span>
@@ -58,7 +58,7 @@ export default function StageWelcome({ onStart, info }: StageWelcomeProps) {
       </div>
 
       <div className="welcome-actions">
-        <button type="button" onClick={handleStart}>Begin our story <ArrowRight /></button>
+        <button type="button" onClick={handleStart}>Begin our memories <ArrowRight /></button>
       </div>
     </section>
     <footer className="welcome-signature"><CreatorCredit /></footer>
