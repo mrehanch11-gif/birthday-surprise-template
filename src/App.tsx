@@ -47,7 +47,7 @@ export default function App() {
       <div className="fixed top-4 right-4 z-50">
         <button
           onClick={handleToggleMusic}
-          aria-label="Toggle Romantic Music"
+          aria-label="Toggle Birthday Music"
           className={`relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 shadow-md ${
             isPlaying
               ? 'bg-[#e6396e] hover:bg-[#d82b60] text-white shadow-pink-200 ring-2 ring-pink-200'
