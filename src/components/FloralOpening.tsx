@@ -18,7 +18,7 @@ export default function FloralOpening({ onComplete, onMusicStart }: { onComplete
       <div className="floral-half floral-right"><img src="/floral-curtain.png" alt="" /></div>
       <div className="floral-vignette" />
       <button type="button" className="floral-seal" onClick={reveal}>
-        <span>{TEMPLATE_CONFIG.openingLine}</span><strong>For {TEMPLATE_CONFIG.recipientName}</strong><i>Open with love</i>
+        <span>{TEMPLATE_CONFIG.openingLine}</span><strong>For {TEMPLATE_CONFIG.recipientName}</strong><i>Open the surprise</i>
       </button>
       <p className="floral-from">{TEMPLATE_CONFIG.openingNote}</p>
     </div>
