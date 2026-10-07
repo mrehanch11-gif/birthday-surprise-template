@@ -21,11 +21,11 @@ interface LoveFlight {
 }
 
 const NOTES = [
-  'Your smile turns even my hardest days into something soft and beautiful.',
-  'No distance has ever made my heart feel one step farther from yours.',
-  'I still choose you in every call, every silence, and every tomorrow.',
-  'You are the calm, the laughter, and the little magic in my ordinary days.',
-  'If love could shorten miles, I would already be standing beside you.',
+  'You have always been one of the people I can talk to without pretending to be someone else.',
+  'Some of my favourite memories are the completely random and funny moments we had growing up.',
+  'You may get angry quickly and keep things inside, but I know how soft-hearted you actually are.',
+  'You care about your family deeply, even when you do not always show how much you miss them.',
+  'I am genuinely proud of the brave, hardworking girl who left home so young to build a better future.',
 ];
 
 const BALLOON_STYLE = [
@@ -38,7 +38,7 @@ const BALLOON_STYLE = [
 
 export default function StageBalloons({ onNext }: StageBalloonsProps) {
   const [popped, setPopped] = useState<boolean[]>(Array(5).fill(false));
-  const [activeNote, setActiveNote] = useState('Five balloons. Five things my heart wants you to know.');
+  const [activeNote, setActiveNote] = useState('Five balloons. Five things I genuinely appreciate about you.');
   const [flights, setFlights] = useState<LoveFlight[]>([]);
   const [noteHit, setNoteHit] = useState(false);
   const noteRef = useRef<HTMLElement>(null);
@@ -58,15 +58,9 @@ export default function StageBalloons({ onNext }: StageBalloonsProps) {
       const startY = rect.top + rect.height * .25;
       const travelRight = startX < innerWidth / 2;
       setFlights((current) => [...current, {
-        id: flightId,
-        startX,
-        startY,
-        endX: target.left + 44,
-        endY: target.top + target.height * .38,
-        sweepX: travelRight ? innerWidth - 115 : 115,
-        returnX: travelRight ? innerWidth * .68 : innerWidth * .32,
-        highY: Math.max(92, innerHeight * .13),
-        lowY: Math.min(innerHeight - 110, innerHeight * .72),
+        id: flightId, startX, startY, endX: target.left + 44, endY: target.top + target.height * .38,
+        sweepX: travelRight ? innerWidth - 115 : 115, returnX: travelRight ? innerWidth * .68 : innerWidth * .32,
+        highY: Math.max(92, innerHeight * .13), lowY: Math.min(innerHeight - 110, innerHeight * .72),
       }]);
     }
     confetti({ particleCount: 58, spread: 78, startVelocity: 34, gravity: .72, scalar: .82, origin, colors: ['#fff2d8','#ff7598','#d51f52','#ffcf67','#ffffff'] });
@@ -83,10 +77,8 @@ export default function StageBalloons({ onNext }: StageBalloonsProps) {
       sound.playFireworks();
       const colors = ['#ffffff','#ffb5cc','#ff6f9d','#ed1f62','#ffdae6'];
       const bursts = [
-        { origin: { x: .02, y: .22 }, angle: 24 },
-        { origin: { x: .98, y: .22 }, angle: 156 },
-        { origin: { x: .03, y: .76 }, angle: 38 },
-        { origin: { x: .97, y: .76 }, angle: 142 },
+        { origin: { x: .02, y: .22 }, angle: 24 }, { origin: { x: .98, y: .22 }, angle: 156 },
+        { origin: { x: .03, y: .76 }, angle: 38 }, { origin: { x: .97, y: .76 }, angle: 142 },
         { origin: { x: .5, y: .02 }, angle: 270 },
       ];
       bursts.forEach((burst, index) => window.setTimeout(() => confetti({ particleCount: 54, spread: 64, startVelocity: 47, gravity: .58, ticks: 170, scalar: .88, origin: burst.origin, angle: burst.angle, colors }), index * 115));
@@ -98,7 +90,7 @@ export default function StageBalloons({ onNext }: StageBalloonsProps) {
     <div className="balloon-classic-panel">
       <header className="balloon-classic-heading">
         <div>
-          <motion.p initial={{ opacity: 0, x: -36 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .12, duration: .65 }}>A little happiness, sent across every distance</motion.p>
+          <motion.p initial={{ opacity: 0, x: -36 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .12, duration: .65 }}>A little birthday happiness for Faiza</motion.p>
           <motion.h2 initial={{ opacity: 0, x: -48, filter: 'blur(7px)' }} animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }} transition={{ delay: .28, duration: .82, ease: [0.16, 1, 0.3, 1] }}>Pop a Little <span>Happiness</span></motion.h2>
         </div>
         <motion.div className="balloon-classic-count" initial={{ opacity: 0, y: -14, scaleX: .82 }} animate={{ opacity: 1, y: 0, scaleX: 1 }} transition={{ delay: .48, duration: .62 }}><i style={{ width: `${count * 20}%` }}/><span>{count} / 5 popped</span></motion.div>
@@ -106,7 +98,7 @@ export default function StageBalloons({ onNext }: StageBalloonsProps) {
 
       <div className="balloon-classic-grid">
         <section className="balloon-classic-canopy">
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .62, duration: .55 }}>Tap each balloon to reveal a note</motion.p>
+          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .62, duration: .55 }}>Pop each balloon to reveal something I appreciate about you</motion.p>
           <div className="balloon-classic-row">
             {BALLOON_STYLE.map((position, index) => <div className="balloon-classic-slot" key={index} style={{ '--h': `${position.hue}deg`, '--d': `${position.delay}s` } as CSSProperties}>
               <AnimatePresence>{!popped[index] && <motion.button type="button" aria-label={`Pop balloon ${index + 1}`} onClick={(event) => popBalloon(index, event)} initial={{ scale: 0, y: 30 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 1.5, opacity: 0, filter: 'blur(7px)' }} transition={{ delay: position.delay * .35 }} whileHover={{ scale: 1.12, y: -9 }} whileTap={{ scale: .9 }}><img src="/realistic-red-balloon.png" alt=""/></motion.button>}</AnimatePresence>
@@ -116,25 +108,19 @@ export default function StageBalloons({ onNext }: StageBalloonsProps) {
         </section>
 
         <motion.aside ref={noteRef} className={`balloon-classic-notes ${noteHit ? 'is-hit' : ''}`} initial={{ opacity: 0, x: 34, scale: .97 }} animate={{ opacity: 1, x: 0, scale: 1 }} transition={{ delay: .78, duration: .72, ease: [0.16, 1, 0.3, 1] }}>
-          <span>Latest note from {TEMPLATE_CONFIG.senderName}</span>
+          <span>A note from {TEMPLATE_CONFIG.senderName}</span>
           <AnimatePresence mode="wait"><motion.blockquote key={activeNote} initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -18 }}><Heart fill="currentColor"/><p>{activeNote}</p></motion.blockquote></AnimatePresence>
           <div className="balloon-classic-dots">{popped.map((done,index)=><i key={index} className={done?'done':''}/>)}</div>
-          <AnimatePresence>{complete ? <motion.button className="balloon-classic-next" type="button" onClick={() => { sound.playSparkle(); onNext(); }} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}>Continue our journey <ArrowRight /></motion.button> : <motion.p className="balloon-classic-hint">{5-count} romantic {5-count===1?'note':'notes'} still waiting</motion.p>}</AnimatePresence>
+          <AnimatePresence>{complete ? <motion.button className="balloon-classic-next" type="button" onClick={() => { sound.playSparkle(); onNext(); }} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}>Continue to our memories <ArrowRight /></motion.button> : <motion.p className="balloon-classic-hint">{5-count} little notes still waiting</motion.p>}</AnimatePresence>
         </motion.aside>
       </div>
     </div>
-    <AnimatePresence>{flights.map((flight) => <motion.div
-      key={flight.id}
-      className="love-arrow-flight"
-      style={{ left: flight.startX, top: flight.startY }}
+    <AnimatePresence>{flights.map((flight) => <motion.div key={flight.id} className="love-arrow-flight" style={{ left: flight.startX, top: flight.startY }}
       initial={{ opacity: 0, scale: .55, x: 0, y: 0 }}
-      animate={{
-        opacity: [0,1,1,1,1,0],
-        scale: [.55,1.08,1.18,1.08,1,.72],
+      animate={{ opacity: [0,1,1,1,1,0], scale: [.55,1.08,1.18,1.08,1,.72],
         x: [0, flight.sweepX-flight.startX, flight.returnX-flight.startX, (flight.endX-flight.startX)*.62, flight.endX-flight.startX, flight.endX-flight.startX],
         y: [0, flight.highY-flight.startY, flight.lowY-flight.startY, flight.highY-flight.startY+35, flight.endY-flight.startY, flight.endY-flight.startY],
-        rotate: [-18,72,178,292,365,365],
-      }}
+        rotate: [-18,72,178,292,365,365] }}
       transition={{ duration: 2.45, times: [0,.23,.48,.7,.92,1], ease: 'easeInOut' }}
     ><span className="love-arrow-aura"/><i/><Heart fill="currentColor"/></motion.div>)}</AnimatePresence>
     <motion.footer className="balloon-classic-footer" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.05, duration: .55 }}><CreatorCredit /></motion.footer>
