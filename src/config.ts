@@ -18,7 +18,7 @@ export const TEMPLATE_CONFIG = {
     'Keep being ambitious, hardworking, a little angry sometimes, and completely yourself. And please never forget that no matter how much life changes, you will always have a cousin in Lahore who is proud of you and will always be happy to have you in his life.',
     'And yes, keep listening to Karan Aujla like nothing else exists. 😂',
     'Happy 21st, Faiza. I hope this year brings you closer to every dream you are quietly working for.',
-    'With lots of love and countless childhood memories,',
+    'With lots of duas, respect, and countless childhood memories,',
     'Rehan'
   ],
   galleryImages: Array.from({ length: 16 }, (_, index) => `/demo/portrait-${(index % 4) + 1}.png`),
