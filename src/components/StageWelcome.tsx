@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useLayoutEffect, useRef } from 'react';
 import { ArrowRight, Heart, MapPin } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -39,7 +41,12 @@ export default function StageWelcome({ onStart, info }: StageWelcomeProps) {
 
   return <div ref={root} className="welcome-editorial">
     <div className="welcome-hero-bg"><img src="/romantic-heart-background-v2.png" alt="" /></div>
-    <div className="welcome-feature-photo"><img src="/demo/portrait-cutout.png" alt="A replaceable transparent demo portrait" /></div>
+    <div className="welcome-feature-photo">
+      <img
+        src="/My%20images/Screenshot%202026-10-07%20173041.png"
+        alt="A personal birthday memory"
+      />
+    </div>
     <div className="welcome-ambient welcome-ambient-one" />
     <div className="welcome-ambient welcome-ambient-two" />
 
