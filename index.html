@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="description" content="A personal 21st birthday surprise for Faiza Saeed, created by Rehan." />
+    <meta name="theme-color" content="#080304" />
+    <title>Happy 21st Birthday, Faiza · From Rehan</title>
+    <meta property="og:title" content="Happy 21st Birthday, Faiza" />
+    <meta property="og:description" content="A personal birthday surprise for Faiza Saeed, created by Rehan." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Safe fetch property wrapper to prevent read-only accessor collisions in sandbox -->
+    <script>
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var customFetch = originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return customFetch;
+            },
+            set: function(fn) {
+              customFetch = fn;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          // ignore if already configurable
+        }
+      })();
+    </script>
+
+    <!-- Typography for the birthday experience -->
+  </head>
+  <body class="bg-rose-50/50 text-slate-800 antialiased selection:bg-rose-200 selection:text-rose-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
